@@ -1,2 +1,3 @@
 # tomorrowio-api-client
-tomorrow.io API client for golang
+
+partially completed tomorrow.io API wrapper client for golang
