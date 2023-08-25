@@ -6,7 +6,6 @@ import (
 	"encoding/json"
 	"errors"
 	"io"
-	"io/ioutil"
 	"net/http"
 	"time"
 )
@@ -88,7 +87,7 @@ func DoTimelinesRequest(apiKey string, request timelinesRequest) (timelinesRespo
 	}
 	defer res.Body.Close()
 
-	zippedBody, err := ioutil.ReadAll(res.Body)
+	zippedBody, err := io.ReadAll(res.Body)
 	if err != nil {
 		return timelinesResponse{}, err
 	}
