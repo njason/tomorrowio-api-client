@@ -17,12 +17,12 @@ var client = http.Client{
 var timelineFields = []string{"temperature", "humidity", "windSpeed", "precipitationIntensity"}
 
 type timelinesRequest struct {
-	location	string
-	fields	[]string
-	units	string
+	location  string
+	fields    []string
+	units     string
 	timesteps string
-	startTime	string
-	endTime	string
+	startTime string
+	endTime   string
 }
 
 type timelinesResponse struct {
@@ -34,9 +34,9 @@ type timelinesResponse struct {
 			Intervals []struct {
 				StartTime time.Time `json:"startTime"`
 				Values    struct {  // https://docs.tomorrow.io/reference/data-layers-core
-					Temperature float64 `json:"temperature"`
-					Humidity float64 `json:"humidity"`
-					WindSpeed float64 `json:"windSpeed"`
+					Temperature            float64 `json:"temperature"`
+					Humidity               float64 `json:"humidity"`
+					WindSpeed              float64 `json:"windSpeed"`
 					PrecipitationIntensity float64 `json:"precipitationIntensity"`
 				} `json:"values"`
 			} `json:"intervals"`
@@ -49,14 +49,14 @@ type timelinesResponse struct {
 
 func NewTimelinesRequest(location string, units string, timesteps string,
 	startTime string, endTime string) timelinesRequest {
-		return timelinesRequest{
-			location: location,
-			fields: timelineFields,
-			units: units,
-			timesteps: timesteps,
-			startTime: startTime,
-			endTime: endTime,
-		}
+	return timelinesRequest{
+		location:  location,
+		fields:    timelineFields,
+		units:     units,
+		timesteps: timesteps,
+		startTime: startTime,
+		endTime:   endTime,
+	}
 }
 
 func DoTimelinesRequest(apiKey string, request timelinesRequest) (timelinesResponse, error) {
